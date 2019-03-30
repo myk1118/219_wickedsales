@@ -1,5 +1,9 @@
 <?php
 
+require_once('functions.php');
+
+set_exception_handler('handleError');
+
 require_once('mysqlconnect.php');
 
 // $query = 'SELECT * FROM `products`';
@@ -15,10 +19,15 @@ $query = "SELECT p.`id`, p.`name`, p.`price`,
 /*procedural*/
 $result = mysqli_query($conn, $query);
 
+if(!$result) {
+    throw new Exception('invalid query: '. mysqli_error($conn));
+}
+
 $data = [];
 
 while($row = mysqli_fetch_assoc($result)) {
     $currentID = $row['id'];
+    $currentID = intval($currentID);
     $image = $row['images'];
 
     if(isset($data[$currentID])) {
@@ -38,7 +47,7 @@ while($row = mysqli_fetch_assoc($result)) {
         $row['price'] = intval($row['price']);
         // $row['price'] = (int)$row['price']; //using casting
 
-        $data[$currentID] = $row;
+        $data[$currentID] = $row; //data is an associate array
     }
 }
 
