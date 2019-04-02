@@ -47,7 +47,7 @@ while($row = mysqli_fetch_assoc($result)) {
         $row['price'] = intval($row['price']);
         // $row['price'] = (int)$row['price']; //using casting
 
-        $data[$currentID] = $row; //data is an associate array
+        $data[$currentID] = $row; //data is an associative array
     }
 }
 
