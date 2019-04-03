@@ -7,9 +7,11 @@ import ProductRoutes from './products';
 // same as
 // import ProductRoutes from './products/index';
 import Home from './home';
+import Nav from './nav';
 
 const App = () => (
     <div>
+        <Nav />
         <Route exact path="/" component={Home} />
         <Route path="/products" component={ProductRoutes} />
     </div>
