@@ -24,25 +24,28 @@ if(!$result) {
 }
 
 $data = [];
+$images = [];
 
 while($row = mysqli_fetch_assoc($result)) {
     $currentID = $row['id'];
-    $currentID = intval($currentID);
+    // $currentID = intval($currentID);
     $image = $row['images'];
 
     if(isset($data[$currentID])) {
-        // $data[$row['id']]['images'][] = $row['images'];
+        $data[$currentID]['images'][] = $row['images'];
         $data[$currentID]['images'][] = $image; //new push way
         // array_push($data[$currentID]['images'], $image); //old push way
         // $data[$currentID]['images'][count($data[$currentID]['images'])] = $image; //mean way!!
     } else {
-        unset($row['images']);
+        // unset($row['images']);
         $row['images'] = [];
         // array_push($row['images'], $image);
         $row['images'][] = $image;
 
         //shorter version
         // $data[$row['id']]['images'] = [$row['images']];
+
+        $row['id'] = intval($row['id']);
 
         $row['price'] = intval($row['price']);
         // $row['price'] = (int)$row['price']; //using casting
