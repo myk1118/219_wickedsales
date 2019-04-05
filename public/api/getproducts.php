@@ -62,8 +62,8 @@ foreach($data as $value) {
 }
 
 $output = [
-    'success'=>true,
-    'products'=>$pureData
+    'success' => true,
+    'products' => $pureData
 ];
 
 $json_output = json_encode($output);
