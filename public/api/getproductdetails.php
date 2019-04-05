@@ -4,6 +4,8 @@ require_once('functions.php'); //list of helper functions
 
 set_exception_handler('handleError');
 
+require_once('config.php');
+
 require_once('mysqlconnect.php');
 
 if(empty($_GET['productId'])) {
