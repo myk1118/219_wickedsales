@@ -1,4 +1,5 @@
 <?php
+require_once('config.php');
 
 require_once('functions.php');
 
@@ -32,7 +33,7 @@ while($row = mysqli_fetch_assoc($result)) {
     $image = $row['images'];
 
     if(isset($data[$currentID])) {
-        $data[$currentID]['images'][] = $row['images'];
+        // $data[$currentID]['images'][] = $row['images'];
         $data[$currentID]['images'][] = $image; //new push way
         // array_push($data[$currentID]['images'], $image); //old push way
         // $data[$currentID]['images'][count($data[$currentID]['images'])] = $image; //mean way!!
