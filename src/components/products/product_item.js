@@ -4,7 +4,7 @@ import { formatMoney } from '../../helpers';
 // console.log('Format Monies:', formatMoney(1127));
 // console.log('Format Money:', formatMoney('asdf'));
 
-export default ({ name, price, images: [productImg = ''] }) => {
+export default ({ name, price, id, images: [productImg = ''], goToDetails }) => {
 
     // const arr = [1, 2, 3, 4, 5];
     // const [first] = arr;
@@ -12,7 +12,7 @@ export default ({ name, price, images: [productImg = ''] }) => {
     // const [,, third] = arr;
 
     return (
-        <li className="collection-item avatar">
+        <li className="collection-item avatar product-item" onClick={() => { goToDetails(id) }}>
             <img className="circle" src={`/dist/${productImg}`} alt={`${name} product image`} />
             <span className="title">{name}</span>
             <p>{formatMoney(price)}</p>
