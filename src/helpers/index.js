@@ -8,3 +8,13 @@ export function formatMoney(pennies) {
     const dollars = (pennies / 100).toFixed(2);
     return `$${dollars}`;
 }
+
+export function toWords(value) {
+    let result = value.replace(/[A-Z]/g, function (letter) {
+        return ` ${letter}`;
+    });
+
+    result = result[0].toUpperCase() + result.slice(1);
+
+    return result;
+}
