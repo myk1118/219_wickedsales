@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ProductCarousel from './product_carousel';
 
 class ProductDetails extends Component {
     state = {
@@ -42,15 +43,15 @@ class ProductDetails extends Component {
         }
 
         const { description = 'No description available', name, images, price } = details;
-        const imageList = images.map((image, index) => {
-            return (
-                <img key={index} src={`/dist/${image}`} />
-            );
-        })
+        // const imageList = images.map((image, index) => {
+        //     return (
+        //         <img key={index} src={`/dist/${image}`} />
+        //     );
+        // })
         return (
             <div className="product-details" >
                 <h1 className="center">{name}</h1>
-                <div>{imageList}</div>
+                <ProductCarousel images={images} />
                 <p> ${(price / 100).toFixed(2)}</p >
                 <p>{description}</p>
             </div >
