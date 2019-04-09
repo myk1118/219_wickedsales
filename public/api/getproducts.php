@@ -1,9 +1,10 @@
 <?php
-require_once('config.php');
 
 require_once('functions.php');
 
 set_exception_handler('handleError');
+
+require_once('config.php');
 
 require_once('mysqlconnect.php');
 
@@ -61,8 +62,8 @@ foreach($data as $value) {
 }
 
 $output = [
-    'success'=>true,
-    'products'=>$pureData
+    'success' => true,
+    'products' => $pureData
 ];
 
 $json_output = json_encode($output);

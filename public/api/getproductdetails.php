@@ -4,6 +4,8 @@ require_once('functions.php'); //list of helper functions
 
 set_exception_handler('handleError');
 
+require_once('config.php');
+
 require_once('mysqlconnect.php');
 
 if(empty($_GET['productId'])) {
@@ -22,7 +24,7 @@ $query = "SELECT p.`id`, p.`name`, p.`price`, p.`description`, p.`misc_details` 
         ";
 
 $result = mysqli_query($conn, $query);
-//$conn = connection
+//$conn = connection (go see mysqlconnect.php)
 //result returns a reference to the data, result itself is not the data
 
 if(!$result) {
