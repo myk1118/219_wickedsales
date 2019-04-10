@@ -13,12 +13,15 @@ if (empty($_SESSION['cart_id'])) {
     throw new Exception('Missing cart ID');
 }
 
+$user_id = 1;
 $cart_id = $_SESSION['cart_id'];
 
 $cart_query = "SELECT c.`created`, c.`total_price`, ci.`quantity`, p.`id`, p.`name`, p.`price`,
 (SELECT `url` FROM `images` WHERE `products_id` = p.`id` LIMIT 1) AS `image`
-FROM `carts` AS `c` JOIN `cart_items` AS `ci` ON ci.`carts_id` = c.`id`
-JOIN `products` AS `p` ON ci.`products_id` = p.`id` WHERE c.`id` = $cart_id";
+FROM `carts` AS `c`
+JOIN `cart_items` AS `ci` ON ci.`carts_id` = c.`id`
+JOIN `products` AS `p` ON ci.`products_id` = p.`id`
+WHERE c.`id` = $cart_id AND c.`users_id` = $user_id";
 
 $cart_data = mysqli_query($conn, $cart_query);
 
