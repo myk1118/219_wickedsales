@@ -34,7 +34,6 @@ $output['cartItems'] = [];
 $output['cartMetaData'] = [];
 
 while ($row = mysqli_fetch_assoc($cart_data)) {
-    print_r($row);
     $output['cartItems'][] = [
         'name' => $row['name'],
         'price' => (int)$row['price'],
