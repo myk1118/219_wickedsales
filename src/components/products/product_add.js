@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'; // higher order component - adds functionality to components
+import axios from 'axios';
 
 class ProductAdd extends Component {
     constructor(props) {
@@ -14,7 +16,11 @@ class ProductAdd extends Component {
     }
 
     addToCart() {
-        console.log('Add', this.state.qty, 'products to cart, ID:', this.props.productId);
+        const { productId } = this.props;
+        const { qty } = this.state;
+        axios.get(`/api/addcartitem.php?product_id=${productId}&quantity=${qty}`).then(resp => {
+            this.props.history.push('/cart');
+        });
     }
 
     incrementQty() {
@@ -52,4 +58,4 @@ class ProductAdd extends Component {
     }
 }
 
-export default ProductAdd;
+export default withRouter(ProductAdd);
