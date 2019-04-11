@@ -9,7 +9,7 @@ $output = [
     'success' => false
 ];
 
-$json_input = file_get_contents("php://input"); // gets the raw string of the body
+$json_input = file_get_contents("php://input"); // gets the raw string of the body of the request packet from the request of the client
 $input = json_decode($json_input, true); // 'true' converts all objects into assoc arrays
 
 if (empty($input['email'])) {
