@@ -23,6 +23,8 @@ if (empty($input['password'])) {
 $email = $input['email'];
 $password = $input['password'];
 
+$email = addslashes($email); // escapes out all the quote characters in a string
+
 $hashedPassword = sha1($password);
 
 unset($input['password']);
