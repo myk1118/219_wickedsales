@@ -46,7 +46,7 @@ if (mysqli_num_rows($result) !== 1) {
 $data = mysqli_fetch_assoc($result);
 
 $token = $email . $data['id'] . microtime();
-$token = sha1(token);
+$token = sha1($token);
 
 $connect_query = "INSERT INTO `user_connections` SET
     `token` = '$token',
