@@ -22,6 +22,21 @@ const SignInForm = props => {
     );
 }
 
+function validate({ email, password }) {
+    const errors = {};
+
+    if (!email) {
+        errors.email = 'Please enter your email';
+    }
+
+    if (!password) {
+        errors.password = 'Please enter your password';
+    }
+
+    return errors;
+}
+
 export default reduxForm({
-    form: 'sign-in-form'
+    form: 'sign-in-form',
+    validate: validate // function name does not matter but the key name does matter, it has to be 'validate'
 })(SignInForm);
