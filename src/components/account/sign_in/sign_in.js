@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import SignInForm from './sign_in_form';
 import { signIn } from '../../../actions';
 
-
 class SignIn extends Component {
     handleSignIn = (values) => {
         console.log('Form Values:', values);

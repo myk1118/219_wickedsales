@@ -1,6 +1,8 @@
+import types from '../actions/types';
+
 const DEFAULT_STATE = {
     auth: false,
-    username: ''
+    email: ''
 };
 
 // const exampleAction = {
@@ -12,8 +14,11 @@ function userReducer(state = DEFAULT_STATE, action) {
     switch (action.type) {
         // case 'LOG_USER_IN':
         //     return { ...state, auth: true, username: action.username };
-        case 'SIGN_IN': // comes from index file in actions folder
-            return { ...state, auth: true };
+        case types.SIGN_IN: // comes from index file in actions folder
+            return { ...state, auth: true, email: action.email };
+        case types.SIGN_OUT:
+            // return { ...state, auth: false };
+            return { ...DEFAULT_STATE };
         default:
             return state;
     }
